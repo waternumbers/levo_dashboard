@@ -44,25 +44,15 @@ lyr = {
         console.log(e);
 	map.removeLayer(this.shown);
         switch (e.value) {
-        case 'nexrad':
-	    this.shown = new L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
-					   {
-					       layers: 'nexrad-n0r-900913',
-					       format: 'image/png',
-					       transparent: true,
-					       attribution: "Weather data © 2012 IEM Nexrad",
-					       pane: 'lyrPane'
-					   });
+        case 'imerg':
+	    this.shown = new L.tileLayer("http://imerg.waternumbers.com/tiles/202107151000/{z}/{x}/{y}.png",
+					 {maxNativeZoom: 3,
+					  attribution: "NASA IMERG data & waternumbers",
+					  pane: 'lyrPane',
+					  options:{tileSize: 512}});
 	    break;
 	case 'bluesq':
-	    this.shown = new L.tileLayer.wms("https://environment.data.gov.uk/arcgis/services/EA/BlueSquareGrid/MapServer/WMSServer",
-					   {
-					       layers: 'Blue_Square_Grid',
-					       format: 'image/png',
- 					       transparent: true,
-					       attribution: "Environment Agency Blue Square",
-					       pane: 'lyrPane'
-					   });
+	    this.shown = new L.tileLayer();
 	    break;
 	}
 	console.log(this.shown)
@@ -119,9 +109,9 @@ eaStations = {
 
 /* Code to initialise the map */
 var map = L.map('map',{
-    zoom: 12,
+    zoom: 7,
     maxZoom: 16,
-    center: [54.44780,-3.19830],
+    center: [28.3949, 84.1240],
     layers: [bg.shown, eaStations.shown],//,wms.shown,markers.shown],
     zoomControl: false
 }) ;
