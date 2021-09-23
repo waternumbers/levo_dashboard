@@ -13,13 +13,13 @@ bg = {
         case 'osmbw':
 	    this.shown = new L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
                                   {"maxZoom": 17,
-                                   "attribution": "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://cartodb.com/attributions'>CartoDB</a>"
+                                   "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://cartodb.com/attributions'>CartoDB</a>"
                                   });
 	    break;
 	case 'osmtopo':
 	    this.shown = new L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
                                     {"maxZoom": 17,
-				     "attribution": "Map data: &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>, <a href='http://viewfinderpanoramas.org'>SRTM</a> | Map style: &copy; <a href='https://opentopomap.org'>OpenTopoMap</a> (<a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)"
+				     "attribution": "Map data: &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>, <a href='http://viewfinderpanoramas.org'>SRTM</a> | Map style: &copy; <a href='https://opentopomap.org'>OpenTopoMap</a> (<a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)"
 				    });
 	    break;
 	case "esri":
@@ -46,7 +46,7 @@ lyr = {
 	    document.getElementById('dateTimeRangeLabel').innerHTML = "Date Time: " + this.t;
 	    
 	    //console.log(t)
-	    this.shown = new L.tileLayer("http://wmts.waternumbers.com/imerg/tiles/"+this.t+"/{z}/{x}/{y}",
+	    this.shown = new L.tileLayer("https://wmts.waternumbers.com/imerg/tiles/"+this.t+"/{z}/{x}/{y}",
 					 {dateTime: this.t,
 	    				  maxNativeZoom: 3,
 					  opacity: 0.9,
@@ -222,7 +222,7 @@ map.on('click', function(e) {
         console.log(popLocation)
 	switch (lyr.name) {
         case 'imerg':
-	    var ustr = "http://wmts.waternumbers.com/imerg/plot/" + popLocation.lng + "/" + popLocation.lat ;
+	    var ustr = "https://wmts.waternumbers.com/imerg/plot/" + popLocation.lng + "/" + popLocation.lat ;
 	    var pstr = '<a href='+ustr+' target=_blank><img src=' + ustr + ' alt="No Data Available"></a>';
 	}
 	var popup = L.popup()
