@@ -19,6 +19,10 @@
       
       body {width:100vw; height: 100vh; }
       #map {width:100%; height: calc(100vh - 6rem); }
+      .leaflet-popup-content {
+      width: 300px !important;
+      height: auto !important;
+      }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 	  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -55,18 +59,27 @@
 	<details>
 	  <summary>Layers</summary>
 	  <input id="lyrRadio1" name="lyrRadio" type="radio"
-		 onChange="lyr.change(this)" value="imerg" checked="checked">
+		 onChange="lyr.change()" value="imerg" checked="checked">
           <label for="lyrRadio1">IMERG NRT</label><br>
-          <input id="lyrRadio2" name="lyrRadio" type="radio"
-		 onChange="lyr.change(this)" value="bluesq">
-          <label for="lyrRadio2">Blue square</label>
+          <!-- <input id="lyrRadio2" name="lyrRadio" type="radio" -->
+	  <!-- 	 onChange="lyr.change()" value="bluesq"> -->
+          <!-- <label for="lyrRadio2">Blue square</label> -->
 	</details>
 	<!-- markers -->
 	<details>
 	  <summary>Stations</summary>
-	  <input id="mrkEAStations" name="mrkCheck" type="checkbox" onChange="eaStations.change(this)">
-	  <label for="mrkEAStations">EA stations</label>
+	  <input id="mrkDHMprp" name = "mrkInput" value="precip" type="checkbox" onChange="mrk.update(this)">
+	  <label for="mrkDHMprp">DHM Precipitation</label><br>
+	  <input id="mrkDHMwl" name = "mrkInput" value="waterLevel" type="checkbox" onChange="mrk.update(this)">
+	  <label for="mrkDHMwl">DHM River Level</label><br>
 	</details>
+	<!-- Date slider -->
+	<label id="dateTimeRangeLabel" for="dateTimeRange">Date Time</label>
+        <input type="range" id="dateTimeRange" value="0"
+	       min="0" max="239" oninput="lyr.update(this.valueAsNumber);">
+	<!-- Legend -->
+	<label id="legendLabel" for="legend">Legend</label>
+	<div id="legend"></div>
       </div>
       <div class="col">
 	<div id="map">
@@ -76,9 +89,9 @@
     <!-- Footer -->
     <footer>
       <p>Copyright &copy; waternumbers 2021 |
-	<a href="privacy.html">privacy</a> |
-	<a href="cookies.html">cookies</a> |
-	<a href="disclaimer.html">disclaimer</a> |
+	<a href="https://waternumbers.co.uk/privacy.html">privacy</a> |
+	<a href="https://waternumbers.co.uk/pcookies.html">cookies</a> |
+	<a href="https://waternumbers.co.uk/disclaimer.html">disclaimer</a> |
 	Registered in England. Company No 11200994. Registered Office: 90 Ullswater Road, Lancaster, LA1 3PS, UK.</p>
     </footer>
     <!-- javascript -->
